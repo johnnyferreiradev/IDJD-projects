@@ -5,10 +5,15 @@ export var speed = 100
 var screenSize
 signal toScore2
 
+var blockMovement = false
+
 func _ready():
 	screenSize = get_viewport_rect().size
 
 func _process(delta):
+	if blockMovement:
+		return
+		
 	var velocity = Vector2()
 	
 	if Input.is_action_pressed("down"):
@@ -47,3 +52,6 @@ func _on_Player2_body_entered(body):
 func restart():
 	position.x = 944
 	position.y = 696
+	
+func setBlockMovement(value):
+	blockMovement = value

@@ -5,10 +5,15 @@ export var speed = 100
 var screenSize
 signal toScore
 
+var blockMovement = false
+
 func _ready():
 	screenSize = get_viewport_rect().size
 
 func _process(delta):
+	if blockMovement:
+		return
+	
 	var velocity = Vector2()
 	
 	if Input.is_action_pressed("ui_down"):
@@ -40,9 +45,12 @@ func _on_Player_body_entered(body):
 	else:
 		$AudioStreamPlayer2D.play()
 	
-	position.x = 320
+	position.x = 620
 	position.y = 696
 	
 func restart():
-	position.x = 320
+	position.x = 620
 	position.y = 696
+	
+func setBlockMovement(value):
+	blockMovement = value

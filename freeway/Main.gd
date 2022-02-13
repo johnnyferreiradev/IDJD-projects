@@ -31,42 +31,28 @@ func _on_slowCarTimer_timeout():
 
 
 func _on_Player_toScore():
-	if score1 < 5:
+	if score1 < 3:
 		score1 += 1
 		$point.play()
 		$scoreboard1.text = str(score1)
-	if score1 >= 5:
+	if score1 >= 3:
 		$restartButton.show()
 		$theme.stop()
 		$result.text = "Player 1 venceu!"
 		$youWin.play()
 		$slowCarTimer.stop()
 		$fastCarTimer.stop()
-
-
-func _on_Player2_toScore2():
-	if score2 < 5:
-		score2 += 1
-		$point.play()
-		$scoreboard2.text = str(score2)
-	if score2 >= 5:
-		$restartButton.show()
-		$theme.stop()
-		$result.text = "Player 2 venceu!"
-		$youWin.play()
-		$slowCarTimer.stop()
-		$fastCarTimer.stop()
+		$Player.setBlockMovement(true)
+		$Player2.setBlockMovement(true)
 
 
 func _on_restartButton_pressed():
 	$restartButton.hide()
 	score1 = 0
-	score2 = 0
 	$scoreboard1.text = "0"
-	$scoreboard2.text = "0"
 	$result.text = ""
 	$slowCarTimer.start()
 	$fastCarTimer.start()
 	$Player.restart()
-	$Player2.restart()
+	$Player.setBlockMovement(false)
 	$theme.play()

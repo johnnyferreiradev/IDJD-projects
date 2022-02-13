@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://win.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player2.tscn" type="PackedScene" id=2]
@@ -9,6 +9,16 @@
 [ext_resource path="res://assets/sons/ponto.wav" type="AudioStream" id=7]
 [ext_resource path="res://assets/sons/ganhou.wav" type="AudioStream" id=8]
 [ext_resource path="res://assets/sons/tema.wav" type="AudioStream" id=9]
+[ext_resource path="res://Grama2.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Grama4.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Grama3.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Grama1.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Cercas.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Arvores.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Poco.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Plantacao.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Milhos.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Arvores2.tscn" type="PackedScene" id=19]
 
 [sub_resource type="DynamicFont" id=1]
 size = 30
@@ -18,16 +28,45 @@ font_data = ExtResource( 6 )
 [node name="Main" type="Node"]
 script = ExtResource( 5 )
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="Road" type="Sprite" parent="."]
 texture = ExtResource( 4 )
 centered = false
+
+[node name="Grama1" parent="." instance=ExtResource( 13 )]
+scale = Vector2( 1.53846, 0.432203 )
+
+[node name="Grama2" parent="." instance=ExtResource( 10 )]
+position = Vector2( 639, 0 )
+scale = Vector2( 1.53606, 0.432203 )
+
+[node name="Grama3" parent="." instance=ExtResource( 12 )]
+position = Vector2( 0, 669 )
+scale = Vector2( 1.51683, 0.432203 )
+
+[node name="Grama4" parent="." instance=ExtResource( 11 )]
+position = Vector2( 511, 968.949 )
+scale = Vector2( 1.58654, 0.432203 )
+
+[node name="Plantacao" parent="." instance=ExtResource( 17 )]
+
+[node name="Cercas" parent="." instance=ExtResource( 14 )]
+
+[node name="Poco" parent="." instance=ExtResource( 16 )]
+position = Vector2( 786, 33 )
+scale = Vector2( 1.20833, 1.1875 )
+
+[node name="Milhos" parent="." instance=ExtResource( 18 )]
+
+[node name="Arvores" parent="." instance=ExtResource( 15 )]
+
+[node name="Arvores2" parent="." instance=ExtResource( 19 )]
 
 [node name="win" parent="." instance=ExtResource( 1 )]
 position = Vector2( 638.66, 64 )
 gravity_scale = 0.0
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
-position = Vector2( 320, 696 )
+position = Vector2( 620, 696 )
 
 [node name="Player2" parent="." instance=ExtResource( 2 )]
 position = Vector2( 944, 696 )
@@ -40,11 +79,22 @@ autostart = true
 wait_time = 0.5
 autostart = true
 
+[node name="restartButton" type="Button" parent="."]
+margin_left = 496.0
+margin_top = 300.0
+margin_right = 796.0
+margin_bottom = 380.0
+custom_fonts/font = SubResource( 1 )
+text = "Reiniciar"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="scoreboard1" type="Label" parent="."]
-margin_left = 300.0
-margin_top = 10.0
-margin_right = 320.0
-margin_bottom = 30.0
+margin_left = 22.0
+margin_top = 11.0
+margin_right = 52.0
+margin_bottom = 41.0
 custom_colors/font_color = Color( 0.94902, 0.980392, 0.027451, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "0"
@@ -67,9 +117,9 @@ __meta__ = {
 }
 
 [node name="result" type="Label" parent="."]
-margin_top = 10.0
+margin_top = 230.0
 margin_right = 1280.0
-margin_bottom = 30.0
+margin_bottom = 260.0
 custom_colors/font_color = Color( 0.94902, 0.980392, 0.027451, 1 )
 custom_fonts/font = SubResource( 1 )
 align = 1
@@ -86,17 +136,6 @@ stream = ExtResource( 8 )
 [node name="theme" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )
 volume_db = -18.0
-
-[node name="restartButton" type="Button" parent="."]
-margin_left = 496.0
-margin_top = 300.0
-margin_right = 796.0
-margin_bottom = 380.0
-custom_fonts/font = SubResource( 1 )
-text = "Reiniciar"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [connection signal="toScore" from="Player" to="." method="_on_Player_toScore"]
 [connection signal="toScore2" from="Player2" to="." method="_on_Player2_toScore2"]
