@@ -16,10 +16,16 @@ func _process(delta):
 	
 	var velocity = Vector2()
 	
-	if Input.is_action_pressed("ui_down"):
+	if Input.is_action_pressed("left"):
+		velocity.x -= 1
+		
+	if Input.is_action_pressed("right"):
+		velocity.x += 1
+	
+	if Input.is_action_pressed("down"):
 		velocity.y += 1
 		
-	if Input.is_action_pressed("ui_up"):
+	if Input.is_action_pressed("up"):
 		velocity.y -= 1
 		
 	if velocity.length() > 0:
@@ -31,6 +37,7 @@ func _process(delta):
 	position += velocity * delta
 	
 	# Impede que o player saia da tela
+	position.x = clamp(position.x, 0, screenSize.x)
 	position.y = clamp(position.y, 0, screenSize.y)
 	
 	# Tocar animações certas
