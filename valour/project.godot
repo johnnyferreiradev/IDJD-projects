@@ -14,7 +14,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="2d-platform-demo"
+config/name="valour"
 run/main_scene="res://menu.tscn"
 config/icon="res://icon.png"
 
