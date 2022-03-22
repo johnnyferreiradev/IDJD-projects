@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Terrain (16x16).png" type="Texture" id=1]
+[ext_resource path="res://sound-theme/theme1.wav" type="AudioStream" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8, 8 )
@@ -149,3 +150,6 @@ __meta__ = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite9/StaticBody2D"]
 position = Vector2( 8, 8 )
 shape = SubResource( 1 )
+
+[node name="SoundTheme" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
